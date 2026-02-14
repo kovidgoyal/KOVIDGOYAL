@@ -1,9 +1,9 @@
 ### Hi there 👋
 
-![Kovid's GitHub stats](https://github-readme-stats.vercel.app/api?username=kovidgoyal&theme=dracula&show_icons=true&include_all_commits=true)
+![Kovid's GitHub stats](./profile/stats-dark.svg#gh-dark-mode-only)![Kovid's GitHub stats](./profile/stats-light.svg#gh-light-mode-only)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kovidgoyal&layout=compact&theme=dracula)](https://github.com/anuraghazra/github-readme-stats)
+![Kovid's Top Languages](./profile/top-langs-dark.svg#gh-dark-mode-only)![Kovid's Top Languages](./profile/top-langs-light.svg#gh-light-mode-only)
 
-[![GitHub Streak](https://github-readme-streak-stats-eight.vercel.app/?user=kovidgoyal&theme=dracula)](https://git.io/streak-stats)
+![Kovid's GitHub Streak](https://github-readme-streak-stats-eight.vercel.app/?user=kovidgoyal&theme=dracula#gh-dark-mode-only)![GitHub Streak](https://github-readme-streak-stats-eight.vercel.app/?user=kovidgoyal&theme=default#gh-light-mode-only)
 
 The best way to contact me is to use my email address which is present at the top of most calibre or kitty source code files.
