@@ -46,8 +46,8 @@ jobs:
       - name: Generate streak
         run: |
           set -xe
-          curl -fSsL -Oprofile/streak-dark.svg https://github-readme-streak-stats-eight.vercel.app/?theme=dracula&user=${{ github.repository_owner }}
-          curl -fSsL -Oprofile/streak-light.svg https://github-readme-streak-stats-eight.vercel.app/?theme=default&user=${{ github.repository_owner }}
+          curl -fSsL -Oprofile/streak-dark.svg 'https://github-readme-streak-stats-eight.vercel.app/?theme=dracula&user=${{ github.repository_owner }}'
+          curl -fSsL -Oprofile/streak-light.svg 'https://github-readme-streak-stats-eight.vercel.app/?theme=default&user=${{ github.repository_owner }}'
 
       - name: Commit cards
         run: |
