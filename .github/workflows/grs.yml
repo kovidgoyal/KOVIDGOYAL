@@ -1,4 +1,4 @@
-name: Update README cards
+name: Update README Widgets
 
 on:
   schedule:
@@ -6,12 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
 
-      - name: Generate stats card dark
+      # Generate GitHub stats cards
+      - name: Generate GitHub stats card dark
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
@@ -19,7 +20,7 @@ jobs:
           path: profile/stats-dark.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate stats card light
+      - name: Generate GitHub stats card light
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
@@ -27,33 +28,44 @@ jobs:
           path: profile/stats-light.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate top languages card dark
+      # Generate Top Languages cards
+      - name: Generate Top Languages card dark
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&theme=dracula&langs_count=6
+          options: username=${{ github.repository_owner }}&layout=compact&theme=dracula&langs_count=8
           path: profile/top-langs-dark.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate top languages card light
+      - name: Generate Top Languages card light
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&theme=default&langs_count=6
+          options: username=${{ github.repository_owner }}&layout=compact&theme=default&langs_count=8
           path: profile/top-langs-light.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate streak
+      # Generate streak stats
+      - name: Generate streak cards
         run: |
-          set -xe
-          curl -fSsL 'https://github-readme-streak-stats-eight.vercel.app/?theme=dracula&user=${{ github.repository_owner }}' > profile/streak-dark.svg
-          curl -fSsL 'https://github-readme-streak-stats-eight.vercel.app/?theme=default&user=${{ github.repository_owner }}' > profile/streak-light.svg
+          curl -fSsL "https://github-readme-streak-stats.herokuapp.com/?user=${{ github.repository_owner }}&theme=dracula" > profile/streak-dark.svg
+          curl -fSsL "https://github-readme-streak-stats.herokuapp.com/?user=${{ github.repository_owner }}&theme=default" > profile/streak-light.svg
 
-      - name: Commit cards
+      # Replace old cards in README with new ones
+      - name: Update README widgets
         run: |
-          set -xe
+          # Replace stats cards
+          sed -i "s|<img src=\"https://github-readme-stats.vercel.app/api?username=.*&show_icons=true&theme=dracula&count_private=true\".*|<img src=\"profile/stats-dark.svg\" width=\"45%\" />|" README.md
+          sed -i "s|<img src=\"https://github-readme-stats.vercel.app/api?username=.*&layout=compact&theme=dracula&langs_count=8\".*|<img src=\"profile/top-langs-dark.svg\" width=\"45%\" />|" README.md
+
+          # Replace streak cards if present
+          sed -i "s|https://github-readme-streak-stats.herokuapp.com/.*|profile/streak-dark.svg|" README.md
+
+      # Commit and push changes if any
+      - name: Commit and push updates
+        run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add profile/*.svg
-          git commit -m "Update README cards"
+          git add profile/*.svg README.md
+          git diff-index --quiet HEAD || git commit -m "Update README widgets"
           git push
