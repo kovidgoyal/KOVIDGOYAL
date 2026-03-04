@@ -2,7 +2,7 @@
 
 ## Principal Developer of calibre and kitty
 
-I am an open-source software engineer and principal maintainer of several widely utilized software projects, specializing in high-performance desktop applications and advanced tooling for power users. My professional expertise encompasses systems engineering, GPU-accelerated interfaces, and quantum computing research.
+I am an *open-source* **software engineer** and **principal maintainer of several widely utilized software projects**, specializing in *high-performance* desktop applications and advanced tooling for power users. My **professional expertise** encompasses systems engineering, *GPU*-accelerated interfaces, and **quantum computing** research.
 
 ---
 
@@ -20,7 +20,7 @@ I am an open-source software engineer and principal maintainer of several widely
 
 ---
 
-##?📊 GitHub Contributions
+## 📊 GitHub Contributions
 
 <div align="center">
   <img src="profile/stats-dark.svg" alt="GitHub statistics" width="45%" />
